@@ -11,15 +11,6 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")#先引入index.html，同时根据后面传入的参数，对html进行修改渲染。
 
-'''
-@app.route('/', methods=['GET'])
-def predict():
-    input = np.array([[5.5, 2.4, 3.7, 1. ]])
-    result = model.prediction(input)
-    #return jsonify({"result":str(result)})
-    return render_template('index.html',result=result)
-'''
-
 @app.route('/submit', methods=['POST'])
 def submit():
     #features = [x for x in request.form.values()]#存储用户输入的参数
