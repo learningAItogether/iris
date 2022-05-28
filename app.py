@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,redirect, url_for
 import numpy as np
 import model
 
@@ -29,9 +29,12 @@ def submit():
         result = "versicolor"
     else:
         result = "verginica"
+        
+    return redirect(url_for('success', result1=result))
 
-    return render_template('index.html',result1=result)
-
+@app.route('/success')
+def success():
+    return "successfully!"
 #启动服务器
 if __name__ == '__main__':
     app.run(debug=True)
